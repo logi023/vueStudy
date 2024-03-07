@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app', // #app에 instance를 붙이겠다는 의미. 이렇게 하면 #app 안에 vue 속성들 사용가능.
+            data: {
+                message: 'hi'
+            }
+        });
+    </script>
+</body>
+</html>
