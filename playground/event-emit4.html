@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ num }}</p>
+        <app-content v-on:increase="incNumb"></app-content>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const appContent = {
+            template: '<button v-on:click="addNum">increase</button>',
+            methods: {
+                addNum:  function(){
+                    // console.log('123');
+                    this.$emit('increase');
+                }
+            }
+        }
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-content': appContent,
+            },
+            data: {
+                num: 0
+            },
+            methods: {
+                incNumb: function() {
+                    this.num ++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

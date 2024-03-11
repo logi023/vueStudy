@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header v-bind:propsdata="message"></app-header>
+        <app-content1 v-on:name="chgTxt"></app-content1>
+        <app-content2 v-on:age="chgTxt"></app-content2>
+        <app-content3 v-on:address="chgTxt"></app-content3>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const appHeader = {
+            template: '<div>{{ propsdata }}</div>',
+            props: ['propsdata']
+        }
+        const appContent1 = {
+            template: '<button v-on:click="inputAge">name</button>',
+            methods: {
+                inputAge: function() {
+                    this.$emit('name', 'es')
+                }
+            }
+        }
+        const appContent2 = {
+            template: '<button v-on:click="inputAge">age</button>',
+            methods: {
+                inputAge: function() {
+                    this.$emit('age', '31')
+                }
+            }
+        }
+        const appContent3 = {
+            template: '<button v-on:click="inputAge">address</button>',
+            methods: {
+                inputAge: function() {
+                    this.$emit('address', 'incheon')
+                }
+            }
+        }
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header': appHeader,
+                'app-content1': appContent1,
+                'app-content2': appContent2,
+                'app-content3': appContent3,
+            },
+            data: {
+                message: 'hi',
+            },
+            methods: {
+                chgTxt: function(value) {
+                    this.message = value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
